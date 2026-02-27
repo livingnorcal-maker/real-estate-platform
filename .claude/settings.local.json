@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --version)",
+      "Bash(npm --version)",
+      "Bash(echo $PATH)",
+      "Bash(cmd /c \"node --version\")",
+      "Bash(cmd /c \"where node\")",
+      "Bash(cmd /c \"where node 2>&1\")",
+      "Bash(cmd /c \"node -v & echo exit:%errorlevel%\")",
+      "Bash(export PATH=\"$PATH:/c/Program Files/nodejs:/c/Users/livin/AppData/Roaming/npm\")",
+      "Bash(export PATH=\"$PATH:/c/Program Files/nodejs\")",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --no-turbopack --import-alias \"@/*\" --use-npm)",
+      "Bash(npx create-next-app@latest real-estate-app --typescript --tailwind --eslint --app --src-dir --no-turbopack --import-alias \"@/*\" --use-npm)",
+      "Bash(npx --yes create-next-app@latest real-estate-app --ts --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm)",
+      "Bash(npm install @supabase/ssr @supabase/supabase-js react-hook-form @hookform/resolvers zod react-dropzone lucide-react date-fns)",
+      "Bash(npx --yes shadcn@latest init -d)",
+      "Bash(npx shadcn@latest add button input card form label toast dialog badge avatar skeleton select calendar popover dropdown-menu separator sheet tabs textarea checkbox -y)",
+      "Bash(npx shadcn@latest add button input card form label sonner dialog badge avatar skeleton select calendar popover dropdown-menu separator sheet tabs textarea checkbox -y)",
+      "Bash(npx next build)",
+      "Bash(git init)",
+      "Bash(git branch -M main)",
+      "Bash(git add -A)"
+    ]
+  }
+}
