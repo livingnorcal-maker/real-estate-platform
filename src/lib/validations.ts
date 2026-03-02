@@ -64,9 +64,36 @@ export const counterOfferSchema = z.object({
   counter_notes: z.string().max(2000).nullable().or(z.literal("")),
 });
 
+export const providerSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters").max(200),
+  type: z.enum(["escrow", "title", "inspector", "lender"]),
+  description: z.string().max(1000).nullable().or(z.literal("")),
+  phone: z.string().nullable().or(z.literal("")),
+  email: z.string().email("Please enter a valid email").nullable().or(z.literal("")),
+  website: z.string().url("Please enter a valid URL").nullable().or(z.literal("")),
+  city: z.string().nullable().or(z.literal("")),
+  state: z.string().length(2, "Use 2-letter state code").nullable().or(z.literal("")),
+});
+
+export const transactionUpdateSchema = z.object({
+  escrow_provider_id: z.string().uuid().nullable().optional(),
+  title_provider_id: z.string().uuid().nullable().optional(),
+  status: z.enum(["opened", "in_progress", "closing", "closed", "cancelled"]).optional(),
+  closing_date: z.string().optional(),
+  notes: z.string().max(2000).nullable().optional(),
+});
+
+export const milestoneUpdateSchema = z.object({
+  status: z.enum(["pending", "in_progress", "completed", "waived"]).optional(),
+  due_date: z.string().nullable().optional(),
+});
+
 export type LoginFormData = z.infer<typeof loginSchema>;
 export type SignupFormData = z.infer<typeof signupSchema>;
 export type ProfileFormData = z.infer<typeof profileSchema>;
 export type ListingFormData = z.infer<typeof listingSchema>;
 export type OfferFormData = z.infer<typeof offerSchema>;
 export type CounterOfferFormData = z.infer<typeof counterOfferSchema>;
+export type ProviderFormData = z.infer<typeof providerSchema>;
+export type TransactionUpdateData = z.infer<typeof transactionUpdateSchema>;
+export type MilestoneUpdateData = z.infer<typeof milestoneUpdateSchema>;

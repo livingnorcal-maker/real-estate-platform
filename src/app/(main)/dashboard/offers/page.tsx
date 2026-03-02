@@ -8,7 +8,7 @@ import { OfferStatusBadge } from "@/components/offers/OfferStatusBadge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
-import { FileText, ExternalLink } from "lucide-react";
+import { FileText, ExternalLink, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 import type { Offer } from "@/types/database";
@@ -170,6 +170,14 @@ export default function MyOffersPage() {
                         className="text-destructive hover:text-destructive"
                       >
                         Withdraw
+                      </Button>
+                    )}
+                    {offer.status === "accepted" && (
+                      <Button asChild size="sm">
+                        <Link href="/dashboard/transactions">
+                          View Transaction
+                          <ArrowRight className="ml-1 h-4 w-4" />
+                        </Link>
                       </Button>
                     )}
                   </div>

@@ -97,6 +97,28 @@ export const BATHROOMS_OPTIONS = [
   { value: "4", label: "4+" },
 ] as const;
 
+export const PROVIDER_TYPES = [
+  { value: "escrow", label: "Escrow" },
+  { value: "title", label: "Title" },
+  { value: "inspector", label: "Inspector" },
+  { value: "lender", label: "Lender" },
+] as const;
+
+export const TRANSACTION_STATUSES = [
+  { value: "opened", label: "Opened" },
+  { value: "in_progress", label: "In Progress" },
+  { value: "closing", label: "Closing" },
+  { value: "closed", label: "Closed" },
+  { value: "cancelled", label: "Cancelled" },
+] as const;
+
+export const MILESTONE_STATUSES = [
+  { value: "pending", label: "Pending" },
+  { value: "in_progress", label: "In Progress" },
+  { value: "completed", label: "Completed" },
+  { value: "waived", label: "Waived" },
+] as const;
+
 export const MAX_PHOTOS = 20;
 export const MAX_PHOTO_SIZE_MB = 10;
 export const MAX_AVATAR_SIZE_MB = 2;

@@ -10,12 +10,14 @@ import {
   FileText,
   Heart,
   Plus,
+  ArrowRightLeft,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const buyerLinks = [
   { href: "/dashboard/overview", label: "Overview", icon: LayoutDashboard },
   { href: "/dashboard/offers", label: "My Offers", icon: FileText },
+  { href: "/dashboard/transactions", label: "Transactions", icon: ArrowRightLeft },
   { href: "/dashboard/saved", label: "Saved", icon: Heart },
 ];
 
@@ -23,6 +25,7 @@ const sellerLinks = [
   { href: "/dashboard/overview", label: "Overview", icon: LayoutDashboard },
   { href: "/dashboard/listings", label: "My Listings", icon: Home },
   { href: "/dashboard/offers", label: "My Offers", icon: FileText },
+  { href: "/dashboard/transactions", label: "Transactions", icon: ArrowRightLeft },
   { href: "/dashboard/saved", label: "Saved", icon: Heart },
 ];
 

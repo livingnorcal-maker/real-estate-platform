@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ArrowLeft, Check, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, X } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 import type { Offer } from "@/types/database";
@@ -195,6 +195,15 @@ export default function SellerOffersPage({
                     <p className="text-sm text-muted-foreground mb-4">
                       &quot;{offer.notes}&quot;
                     </p>
+                  )}
+
+                  {offer.status === "accepted" && (
+                    <Button asChild size="sm">
+                      <Link href="/dashboard/transactions">
+                        View Transaction
+                        <ArrowRight className="ml-1 h-4 w-4" />
+                      </Link>
+                    </Button>
                   )}
 
                   {offer.status === "pending" && (

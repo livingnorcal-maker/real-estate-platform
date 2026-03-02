@@ -223,6 +223,148 @@ export interface Database {
           read?: boolean;
         };
       };
+      service_providers: {
+        Row: {
+          id: string;
+          name: string;
+          type: "escrow" | "title" | "inspector" | "lender";
+          description: string | null;
+          phone: string | null;
+          email: string | null;
+          website: string | null;
+          logo_url: string | null;
+          city: string | null;
+          state: string | null;
+          rating: number | null;
+          active: boolean;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          type: "escrow" | "title" | "inspector" | "lender";
+          description?: string | null;
+          phone?: string | null;
+          email?: string | null;
+          website?: string | null;
+          logo_url?: string | null;
+          city?: string | null;
+          state?: string | null;
+          rating?: number | null;
+          active?: boolean;
+          created_at?: string;
+        };
+        Update: {
+          name?: string;
+          type?: "escrow" | "title" | "inspector" | "lender";
+          description?: string | null;
+          phone?: string | null;
+          email?: string | null;
+          website?: string | null;
+          logo_url?: string | null;
+          city?: string | null;
+          state?: string | null;
+          rating?: number | null;
+          active?: boolean;
+        };
+      };
+      transactions: {
+        Row: {
+          id: string;
+          listing_id: string;
+          offer_id: string;
+          buyer_id: string;
+          seller_id: string;
+          escrow_provider_id: string | null;
+          title_provider_id: string | null;
+          status: "opened" | "in_progress" | "closing" | "closed" | "cancelled";
+          closing_date: string | null;
+          notes: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          listing_id: string;
+          offer_id: string;
+          buyer_id: string;
+          seller_id: string;
+          escrow_provider_id?: string | null;
+          title_provider_id?: string | null;
+          status?: "opened" | "in_progress" | "closing" | "closed" | "cancelled";
+          closing_date?: string | null;
+          notes?: string | null;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          escrow_provider_id?: string | null;
+          title_provider_id?: string | null;
+          status?: "opened" | "in_progress" | "closing" | "closed" | "cancelled";
+          closing_date?: string | null;
+          notes?: string | null;
+          updated_at?: string;
+        };
+      };
+      transaction_milestones: {
+        Row: {
+          id: string;
+          transaction_id: string;
+          title: string;
+          description: string | null;
+          status: "pending" | "in_progress" | "completed" | "waived";
+          due_date: string | null;
+          completed_at: string | null;
+          sort_order: number;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          transaction_id: string;
+          title: string;
+          description?: string | null;
+          status?: "pending" | "in_progress" | "completed" | "waived";
+          due_date?: string | null;
+          completed_at?: string | null;
+          sort_order?: number;
+          created_at?: string;
+        };
+        Update: {
+          title?: string;
+          description?: string | null;
+          status?: "pending" | "in_progress" | "completed" | "waived";
+          due_date?: string | null;
+          completed_at?: string | null;
+          sort_order?: number;
+        };
+      };
+      escrow_payments: {
+        Row: {
+          id: string;
+          transaction_id: string;
+          payer_id: string;
+          amount: number;
+          stripe_payment_intent_id: string | null;
+          status: "pending" | "succeeded" | "refunded";
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          transaction_id: string;
+          payer_id: string;
+          amount: number;
+          stripe_payment_intent_id?: string | null;
+          status?: "pending" | "succeeded" | "refunded";
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          stripe_payment_intent_id?: string | null;
+          status?: "pending" | "succeeded" | "refunded";
+          updated_at?: string;
+        };
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;
@@ -236,3 +378,7 @@ export type Listing = Database["public"]["Tables"]["listings"]["Row"];
 export type Offer = Database["public"]["Tables"]["offers"]["Row"];
 export type SavedListing = Database["public"]["Tables"]["saved_listings"]["Row"];
 export type Notification = Database["public"]["Tables"]["notifications"]["Row"];
+export type ServiceProvider = Database["public"]["Tables"]["service_providers"]["Row"];
+export type Transaction = Database["public"]["Tables"]["transactions"]["Row"];
+export type TransactionMilestone = Database["public"]["Tables"]["transaction_milestones"]["Row"];
+export type EscrowPayment = Database["public"]["Tables"]["escrow_payments"]["Row"];

@@ -15,7 +15,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { NotificationBell } from "./NotificationBell";
-import { Home, Menu, Search, User, LogOut, LayoutDashboard } from "lucide-react";
+import { Home, Menu, Search, User, LogOut, LayoutDashboard, Building2 } from "lucide-react";
 import { useState } from "react";
 
 export function Navbar() {
@@ -53,6 +53,13 @@ export function Navbar() {
           >
             <Search className="h-4 w-4" />
             Browse Listings
+          </Link>
+          <Link
+            href="/providers"
+            className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+          >
+            <Building2 className="h-4 w-4" />
+            Providers
           </Link>
 
           {!loading && (
@@ -134,6 +141,14 @@ export function Navbar() {
               >
                 <Search className="h-5 w-5" />
                 Browse Listings
+              </Link>
+              <Link
+                href="/providers"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center gap-2 text-lg font-medium"
+              >
+                <Building2 className="h-5 w-5" />
+                Providers
               </Link>
 
               {user ? (
